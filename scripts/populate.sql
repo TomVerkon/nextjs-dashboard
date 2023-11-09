@@ -1,0 +1,41 @@
+INSERT INTO public.users(name, email, password)	VALUES ( 'User', 'user@nextmail.com', '$2b$10$ZG3DiutpWz4xDqzuHl1V6eUDHj7XognD1HsQDs3ztld0MLXjZd5H6');
+
+INSERT INTO public.customers(name, email, image_url) VALUES ('Delba de Oliveira', 'delba@oliveira.com', '/customers/delba-de-oliveira.png');
+INSERT INTO public.customers(name, email, image_url) VALUES ('Lee Robinson', 'lee@robinson.com', '/customers/lee-robinson.png');
+INSERT INTO public.customers(name, email, image_url) VALUES ('Hector Simpson', 'hector@simpson.com', '/customers/hector-simpson.png');
+INSERT INTO public.customers(name, email, image_url) VALUES ('Steven Tey', 'steven@tey.com','/customers/steven-tey.png');
+INSERT INTO public.customers(name, email, image_url) VALUES ('Steph Dietz', 'steph@dietz.com','/customers/steph-dietz.png');
+INSERT INTO public.customers(name, email, image_url) VALUES ('Michael Novotny', 'michael@novotny.com', '/customers/michael-novotny.png');
+INSERT INTO public.customers(name, email, image_url) VALUES ('Evil Rabbit', 'evil@rabbit.com', '/customers/evil-rabbit.png');
+INSERT INTO public.customers(name, email, image_url) VALUES ('Emil Kowalski', 'emil@kowalski.com', '/customers/emil-kowalski.png');
+INSERT INTO public.customers(name, email, image_url) VALUES ('Amy Burns', 'amy@burns.com', '/customers/amy-burns.png');
+INSERT INTO public.customers(name, email, image_url) VALUES ('Balazs Orban', 'balazs@orban.com', '/customers/balazs-orban.png');
+
+INSERT INTO public.invoices(customer_id, amount, status, date) VALUES ( (select id from customers where email = 'delba@oliveira.com'), 15795, 'pending', '2022-12-06');
+INSERT INTO public.invoices(customer_id, amount, status, date) VALUES ( (select id from customers where email = 'lee@robinson.com'), 20348, 'pending', '2022-11-14');
+INSERT INTO public.invoices(customer_id, amount, status, date) VALUES ( (select id from customers where email = 'steph@dietz.com'), 3040, 'paid', '2022-10-29');
+INSERT INTO public.invoices(customer_id, amount, status, date) VALUES ( (select id from customers where email = 'steven@tey.com'), 44800, 'paid', '2023-09-10');
+INSERT INTO public.invoices(customer_id, amount, status, date) VALUES ( (select id from customers where email = 'michael@novotny.com'), 34577, 'pending', '2023-08-05');
+INSERT INTO public.invoices(customer_id, amount, status, date) VALUES ( (select id from customers where email = 'emil@kowalski.com'), 54246, 'pending', '2023-07-16');
+INSERT INTO public.invoices(customer_id, amount, status, date) VALUES ( (select id from customers where email = 'evil@rabbit.com'), 666, 'pending', '2023-06-27');
+INSERT INTO public.invoices(customer_id, amount, status, date) VALUES ( (select id from customers where email = 'steven@tey.com'), 32545, 'paid', '2023-06-09');
+INSERT INTO public.invoices(customer_id, amount, status, date) VALUES ( (select id from customers where email = 'steph@dietz.com'), 1250, 'paid', '2023-06-17');
+INSERT INTO public.invoices(customer_id, amount, status, date) VALUES ( (select id from customers where email = 'michael@novotny.com'), 8546, 'paid', '2023-06-07');
+INSERT INTO public.invoices(customer_id, amount, status, date) VALUES ( (select id from customers where email = 'lee@robinson.com'), 500, 'paid', '2023-08-19');
+INSERT INTO public.invoices(customer_id, amount, status, date) VALUES ( (select id from customers where email = 'michael@novotny.com'), 8945, 'paid', '2023-06-03');
+INSERT INTO public.invoices(customer_id, amount, status, date) VALUES ( (select id from customers where email = 'hector@simpson.com'), 8945, 'paid', '2023-06-18');
+INSERT INTO public.invoices(customer_id, amount, status, date) VALUES ( (select id from customers where email = 'delba@oliveira.com'), 8945, 'paid', '2023-10-04');
+INSERT INTO public.invoices(customer_id, amount, status, date) VALUES ( (select id from customers where email = 'hector@simpson.com'), 1000, 'paid', '2022-06-05');
+
+INSERT INTO public.revenue(month, revenue) VALUES ('Jan', 2000  );
+INSERT INTO public.revenue(month, revenue) VALUES ('Feb', 1800  );
+INSERT INTO public.revenue(month, revenue) VALUES ('Mar', 2200  );
+INSERT INTO public.revenue(month, revenue) VALUES ('Apr', 2500  );
+INSERT INTO public.revenue(month, revenue) VALUES ('May', 2300  );
+INSERT INTO public.revenue(month, revenue) VALUES ('Jun', 3200  );
+INSERT INTO public.revenue(month, revenue) VALUES ('Jul', 3500  );
+INSERT INTO public.revenue(month, revenue) VALUES ('Aug', 3700  );
+INSERT INTO public.revenue(month, revenue) VALUES ('Sep', 2500  );
+INSERT INTO public.revenue(month, revenue) VALUES ('Oct', 2800  );
+INSERT INTO public.revenue(month, revenue) VALUES ('Nov', 3000  );
+INSERT INTO public.revenue(month, revenue) VALUES ('Dec', 4800  );

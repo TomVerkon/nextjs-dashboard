@@ -1,7 +1,18 @@
 import { lusitana } from '@/app/ui/fonts';
+import bcrypt from 'bcrypt';
 import Image from 'next/image';
 import Link from 'next/link';
-export default function Page() {
+
+export default async function Page() {
+  const encryptPwd = async (): Promise<string> => {
+    const hashedPassword = bcrypt.hash('123456', 10);
+    return hashedPassword;
+  };
+
+  const encryptedPwd = await encryptPwd();
+
+  console.log(encryptedPwd);
+
   return (
     <main className='flex min-h-screen flex-col p-6'>
       <div className='flex h-20 shrink-0 items-end rounded-lg bg-blue-500 p-4 md:h-52'>
