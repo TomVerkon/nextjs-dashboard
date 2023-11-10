@@ -1,4 +1,5 @@
 import { sql } from '@vercel/postgres';
+import { unstable_noStore as noStore } from 'next/cache';
 import {
   CustomerField,
   CustomersTable,
@@ -13,14 +14,14 @@ import { formatCurrency } from './utils';
 export async function fetchRevenue() {
   // Add noStore() here prevent the response from being cached.
   // This is equivalent to in fetch(..., {cache: 'no-store'}).
-  //noStore();
+  noStore();
 
   try {
     // Artificially delay a reponse for demo purposes.
     // Don't do this in real life :)
 
-    console.log('Fetching revenue data...');
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    // console.log('Fetching revenue data...');
+    // await new Promise(resolve => setTimeout(resolve, 3000));
 
     const data = await sql<Revenue>`SELECT * FROM revenue`;
     console.log(data);
@@ -35,8 +36,10 @@ export async function fetchRevenue() {
 }
 
 export async function fetchLatestInvoices() {
-  //noStore();
+  noStore();
   try {
+    // console.log('Fetching LatestInvoices data...');
+    // await new Promise(resolve => setTimeout(resolve, 2000));
     const data = await sql<LatestInvoiceRaw>`
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
       FROM invoices
@@ -56,11 +59,14 @@ export async function fetchLatestInvoices() {
 }
 
 export async function fetchCardData() {
-  //noStore();
+  noStore();
   try {
     // You can probably combine these into a single SQL query
     // However, we are intentionally splitting them to demonstrate
     // how to initialize multiple queries in parallel with JS.
+    // console.log('Fetching Card data...');
+    // await new Promise(resolve => setTimeout(resolve, 1000));
+
     const invoiceCountPromise = sql`SELECT COUNT(*) FROM invoices`;
     const customerCountPromise = sql`SELECT COUNT(*) FROM customers`;
     const invoiceStatusPromise = sql`SELECT
@@ -96,7 +102,7 @@ export async function fetchFilteredInvoices(
   query: string,
   currentPage: number,
 ) {
-  //noStore();
+  noStore();
 
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
@@ -130,7 +136,7 @@ export async function fetchFilteredInvoices(
 }
 
 export async function fetchInvoicesPages(query: string) {
-  //noStore();
+  noStore();
   try {
     const count = await sql`SELECT COUNT(*)
     FROM invoices
@@ -152,7 +158,7 @@ export async function fetchInvoicesPages(query: string) {
 }
 
 export async function fetchInvoiceById(id: string) {
-  //noStore();
+  noStore();
   try {
     const data = await sql<InvoiceForm>`
       SELECT
